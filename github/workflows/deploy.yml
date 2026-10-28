@@ -1,0 +1,23 @@
+on:
+push:
+branches:
+- main
+permissions:
+contents:read
+pages:write
+id-token:write
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- name: Checkout code
+uses:actions /checkout@v4
+- name: configure github pages
+uses: actions/upload-pages-artifact@v5
+- name: upload website files
+uses:actions/upload-pages-artifact@v5
+with:
+path: ./public
+- name: deploy to github pages
+uses: actions/deploy-pages@v4
+
